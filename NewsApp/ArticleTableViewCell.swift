@@ -33,7 +33,7 @@ class ArticleTableViewCell: UITableViewCell {
                 if let data = data {
                     articleImage.image = UIImage(data: data)
                 }
-            }
+            } 
         }
         if let title = article.title {
             titleLbl.text = title

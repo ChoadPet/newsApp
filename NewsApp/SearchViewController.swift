@@ -10,38 +10,25 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var categoryField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    
     var news = [Array<Articles>]()
     let token = "6ff920ee0921492f8767a86b8b143fee"
-    
-    @IBOutlet weak var categoryField: UITextField!
-    @IBOutlet weak var categoryLbl: UILabel!
-    
-    @IBOutlet weak var languageField: UITextField!
-    @IBOutlet weak var examplesLbl: UILabel!
-    
+    let categories = ["", "All", "Business", "Entertainment", "Gaming", "Sport", "Technology", "General", "Music", "Politics"]
+    var selectedCategory: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        assignbackground()
-        self.view.backgroundColor = UIColor.lightGray
-        categoryField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0);
-        languageField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0);
-        
-        categoryLbl.text =  "Possible options:\n\tbusiness\n\tentertainment\n\t" +
-            "gaming\n\tgeneral\n\thealth-and-medical\n\tmusic\n\t" +
-        "politics\n\tsport\n\ttechnology\nDefault: all categories."
-        
-        examplesLbl.text =  "Possible options:\n\ten - english\n\tru - russian.\n\t" +
-        "es - spanish\n\tfr - franch\nDefault: English."
-        
-        categoryField.text = ""
-        languageField.text = "en"
-        
+        searchButton.layer.backgroundColor = UIColor(red:0.00, green:0.54, blue:0.33, alpha:1.0).cgColor
+        createPickerView()
+        createToolBar()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
@@ -51,14 +38,38 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchPressed(_ sender: UIButton) {
         
-        if let language = languageField.text, let category = categoryField.text {
-            articleRequest(withLanguage: language, andCategory: category, token: token)
+        if var category = categoryField.text {
+            category = category == "All" ? "" : category
+            articleRequest(andCategory: category, token: token)
         }
     }
     
-    func articleRequest(withLanguage language: String, andCategory category: String, token: String) {
+    func createPickerView() {
+        let categoryPicker = UIPickerView()
         
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?language=\(language)&category=\(category)&apiKey=\(token)")
+        categoryPicker.delegate = self
+        categoryField.inputView = categoryPicker
+    }
+    
+    func createToolBar() {
+        let toolBar = UIToolbar()
+        
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SearchViewController.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        categoryField.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func articleRequest(andCategory category: String, token: String) {
+        
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?language=en&category=\(category)&apiKey=\(token)")
         let request = URLRequest(url: url! as URL)
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
@@ -109,3 +120,34 @@ class SearchViewController: UIViewController {
     
     
 }
+
+extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategory = categories[row]
+       categoryField.text = selectedCategory
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
