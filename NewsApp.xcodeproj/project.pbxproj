@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D14DF931FE556E4003EC9D6 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14DF921FE556E4003EC9D6 /* Articles.swift */; };
+		1D14DF951FE55816003EC9D6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14DF941FE55816003EC9D6 /* NewsTableViewController.swift */; };
+		1D14DF971FE563A4003EC9D6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14DF961FE563A4003EC9D6 /* SearchViewController.swift */; };
+		1D65CE361FE596B70032B917 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D65CE351FE596B70032B917 /* ArticleTableViewCell.swift */; };
 		1D68AFFA1FE44EAC00DC45AB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D68AFF91FE44EAC00DC45AB /* SignUpViewController.swift */; };
 		1D69A5F01FE440E500B7C3F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D69A5EF1FE440E500B7C3F8 /* GoogleService-Info.plist */; };
 		1D7F6AA21FE43B470096E246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F6AA11FE43B470096E246 /* AppDelegate.swift */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D14DF921FE556E4003EC9D6 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
+		1D14DF941FE55816003EC9D6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		1D14DF961FE563A4003EC9D6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1D65CE351FE596B70032B917 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1D68AFF91FE44EAC00DC45AB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1D69A5EF1FE440E500B7C3F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D7F6A9E1FE43B470096E246 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,9 +73,13 @@
 		1D7F6AA01FE43B470096E246 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				1D14DF921FE556E4003EC9D6 /* Articles.swift */,
 				1D7F6AA11FE43B470096E246 /* AppDelegate.swift */,
 				1D7F6AA31FE43B470096E246 /* ViewController.swift */,
 				1D68AFF91FE44EAC00DC45AB /* SignUpViewController.swift */,
+				1D14DF961FE563A4003EC9D6 /* SearchViewController.swift */,
+				1D14DF941FE55816003EC9D6 /* NewsTableViewController.swift */,
+				1D65CE351FE596B70032B917 /* ArticleTableViewCell.swift */,
 				1D7F6AA51FE43B470096E246 /* Main.storyboard */,
 				1D7F6AA81FE43B470096E246 /* Assets.xcassets */,
 				1D7F6AAA1FE43B470096E246 /* LaunchScreen.storyboard */,
@@ -220,8 +232,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D14DF971FE563A4003EC9D6 /* SearchViewController.swift in Sources */,
 				1D68AFFA1FE44EAC00DC45AB /* SignUpViewController.swift in Sources */,
 				1D7F6AA41FE43B470096E246 /* ViewController.swift in Sources */,
+				1D14DF931FE556E4003EC9D6 /* Articles.swift in Sources */,
+				1D14DF951FE55816003EC9D6 /* NewsTableViewController.swift in Sources */,
+				1D65CE361FE596B70032B917 /* ArticleTableViewCell.swift in Sources */,
 				1D7F6AA21FE43B470096E246 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = vpoltave.NewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -381,7 +397,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = vpoltave.NewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
